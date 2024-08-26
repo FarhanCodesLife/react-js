@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-function user() {
-  return (
-    <div>user</div>
-  )
-}
+// function user() {
+//   return (
+//     <div>user</div>
+//   )
+// }
 
-export default user
+// export default user

@@ -1,9 +1,13 @@
 import React, { useRef } from 'react'
 import { motion } from "framer-motion"
+import Data from 'Data.jsx'
+
 function App() {
   let hero = useRef()
   return (
     <>
+    <Data />
+    
     <div className=' flex flex-wra justify-center items-center w-full h-screen bg-slate-500'>
       <div className='w-[30vw] h-80  flex justify-center content-center'>
         <div className='w-[75%] h-full item-center justify-center rounded-lg items-center bg-slate-400'>
