@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <title>Document</title>
+</head>
+<body >
+    
+<!-- navbar start -->
+<div class="navbar bg-blue-600">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-2xl">Blogging App</a>
+    </div>
+    <div id="avatar">
+
+        <a href="login.html"><button class="btn btn-primary rounded-full text-xl">Login</button></a>
+    </div>
+  </div>
+
+<!-- navbar khatam -->
+
+<!-- blog start -->
+<div class="navbar bg-gray-100">
+    <div class="flex-1">
+        <h1 class="text-3xl font-bold uppercase p-6">dashbord</h1>
+    </div>
+  </div>
+
+<form id="form">
+
+<main class="h-[0%]">
+
+  <div class=" w-full flex h-[50%] justify-center  ">
+
+<div class=" w-[80%] bg-gray-100 mt-3 h-[50%] ">
+    <div class="  h-[20%] mt-3  w-full flex justify-center">
+        <input id="placeholder" type="text" class=" w-[90%] p-6 mt-3 h-[10px] border" placeholder="placeholder" required>
+
+    </div>
+    <div class="  w-full h-[50%] flex justify-center">
+        <textarea id="textarea" class="textarea textarea-bordered h-24 w-[90%] px-6 mt-7 text-start" required placeholder="What is yor mind"></textarea>
+
+
+    </div>
+    <div class=" w-full h-[10%] flex px-12 m-5  text-left">
+        <button type="submit" class="btn btn-primary text-xl  text-left">Publish Blog</button>
+        
+    </div>
+    
+
+
+</div>
+
+</form>
+
+
+</div>
+<div class=" flex justify-center ">
+    
+    
+    <div class=" w-[80%] mt-3 h-screen     " >
+        <div class="m-5">
+            <h1 class="text-3xl capitalize font-bold">blogs</h1>
+        </div>
+        <div id="newblog">
+            
+        </div>
+
+    </div>
+</div>
+</main>
+
+ <!-- blog end -->
+
+
+    <script type="module" src="dashbord.js"></script>
+    <script type="module" src="config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
