@@ -8,3 +8,5 @@ function data() {
 }
 
 export default data
+
+git config --global user.email "farhansmit0318@gmail.com"
