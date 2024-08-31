@@ -23,15 +23,15 @@ function App() {
 
     {data ? data.map((item,index) => {
       return(  
-        <div className="card bg-base-100 w-96  h-[%]  shadow-xl" key={index}>
+        <div className="card bg-base-100 w-80  h-[100%]  shadow-xl" key={index}>
         <figure>
-          <img className='w-[100%] h-[10]\\ '
+          <img className='w-[100%] h-[100%] '
             src={item.image}
             alt="Shoes" />
         </figure>
         <div className="card-body">
           <h2 className="card-title ">{item.title}</h2>
-        <p className='w-full  overflow-x-auto  '>{item.description}</p>
+        <p className='w-full h-32 overflow-x-auto  '>{item.description}</p>
         <br />
         <h2 className="card-title ">cataegory: {item.category}</h2>
         <h2 className="card-title ">rating : {item.rating.rate}</h2>
