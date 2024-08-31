@@ -31,7 +31,7 @@ function App() {
         </figure>
         <div className="card-body">
           <h2 className="card-title ">{item.title}</h2>
-        <p className='w-full h-32 overflow-x-auto  '>{item.description}</p>
+        <p className='w-full  overflow-x-auto  '>{item.description}</p>
         <br />
         <h2 className="card-title ">cataegory: {item.category}</h2>
         <h2 className="card-title ">rating : {item.rating.rate}</h2>
