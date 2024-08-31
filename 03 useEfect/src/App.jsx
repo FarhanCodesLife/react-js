@@ -19,13 +19,13 @@ function App() {
   
   return (
     <>
-    <div className='w-full h-screen justify-center items-center flex flex-wrap'>
+    <div className='w-full h-screen justify-center gap-4 items-center flex flex-wrap'>
 
     {data ? data.map((item,index) => {
       return(  
-        <div className="card bg-base-100 w-80 gap-2   shadow-xl" key={index}>
+        <div className="card bg-base-100 w-96  h-[%]  shadow-xl" key={index}>
         <figure>
-          <img className='w-52 h-72'
+          <img className='w-[100%] h-[10]\\ '
             src={item.image}
             alt="Shoes" />
         </figure>
