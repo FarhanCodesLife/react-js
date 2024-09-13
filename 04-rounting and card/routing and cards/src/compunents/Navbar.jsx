@@ -9,6 +9,7 @@ const Navbar = () => {
     <button> <Link to='about' >About</Link></button>
     <button> <Link to='servises' >Servises</Link></button>
     <button> <Link to='products' >Products</Link></button>
+    <button> <Link to='singleproduct' >singklhgb Products</Link></button>
     
     </>
   )

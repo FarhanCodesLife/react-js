@@ -20,11 +20,11 @@ const Products = () => {
       
   }, [])
 
-  let navigete = useNavigate()
+  const navigete = useNavigate()
 
   function addproduct(element) {
     console.log("clicked " + element.id);
-    navigete(`singleProduct/${element.id}`)
+    navigete(`SingleProduct/${element.id}`)
 
     
     
