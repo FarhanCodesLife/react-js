@@ -3,7 +3,7 @@ import React from 'react'
 const Register = () => {
   return (
 <>
-<div className='bg-gray-300 h-screen overflow-hidden'>
+<div className='bg-gray-200 h-screen overflow-hidden'>
 
 <div className='bg-white ' >
 

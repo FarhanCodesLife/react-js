@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AllBlogs from './pages/AllBlogs.jsx'
 import Profile from './pages/Profile.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 
 let router = createBrowserRouter([{
   path:'/',
@@ -32,6 +33,10 @@ let router = createBrowserRouter([{
       path:'profile',
       element:<Profile/>
     },
+    {
+      path:'dashboard',
+      element:<Dashboard/>
+    }
   ]
 }])
 
