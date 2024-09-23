@@ -2,7 +2,11 @@ import React from 'react'
 
 const AllBlogs = () => {
   return (
+
+
     <div>AllBlogs</div>
+  
+  
   )
 }
 
