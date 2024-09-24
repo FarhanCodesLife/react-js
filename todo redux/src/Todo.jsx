@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addtodo,  } from "./config/reduxconfig/reducer/todoSlice";
+import { addtodo, deletetodo, edittodo,  } from "./config/reduxconfig/reducer/todoSlice";
 
 const Todo = () => {
 
@@ -12,15 +12,31 @@ event.preventDefault()
 console.log(todoval.current.value);
 dispatch(addtodo({
   title:todoval.current.value
-}))
+})
+)
+todoval.current.value = ""
 
 
   }
 
-  const selector = useSelector(state => state.todos.todo);
+  let selector = useSelector(state => state.todos.todo);
+  console.log(selector);
+  
   ;
+  let delettodofromredux=(index)=>{
+    dispatch(deletetodo({
+      index
+    }))
+  }
 
+  let edittodofromredux=(index)=>{
+    let newtodoval = prompt("enter new todo")
+    dispatch(edittodo({
+      index:index,
+      newtodo:newtodoval
 
+    }))
+  }
   
   return (
     <>
@@ -54,15 +70,15 @@ dispatch(addtodo({
 
             <ol>
               
-              {selector?  selector.map((items)=>{console.log(items)
+              {selector ?  selector.map((items,index)=>{
 
                 return <div key={items.id} className='p-3 rounded-lg border border-zinc-500  bg-gray-300 justify-center items-center m-3  ' > 
                   <li className='text-2xl font-semibold capitalize'>
                     {items.title}
                   </li>
                   
-                  <button className='border mr-3 mt-4 hover:scale-110 hover:border-white hover:bg-red-700 hover:text-white rounded-full border-black text-sm bg-red-500 px-3 py-1' onClick={} >Delet</button>
-                  <button className='border mr-3 mt-4 hover:scale-110 hover:border-white hover:bg-green-700 hover:text-white rounded-full border-black text-sm bg-green-500 px-3 py-1' >Edit</button>
+                  <button className='border mr-3 mt-4 hover:scale-110 hover:border-white hover:bg-red-700 hover:text-white rounded-full border-black text-sm bg-red-500 px-3 py-1' onClick={()=>delettodofromredux(index)} >Delet</button>
+                  <button className='border mr-3 mt-4 hover:scale-110 hover:border-white hover:bg-green-700 hover:text-white rounded-full border-black text-sm bg-green-500 px-3 py-1' onClick={()=>edittodofromredux(index) }>Edit</button>
                 </div> 
                 
               }):<h1>not found</h1>}
@@ -70,9 +86,7 @@ dispatch(addtodo({
             </ol>
           </div>
         </div>
-        <div className="items-center w-full text-center">
-          <button className="btn  btn-primary">LogOut</button>
-        </div>
+       
       </div>
     </>
   );

@@ -20,6 +20,16 @@ export const todoSlice = createSlice({
                 
             
         },
+        edittodo:(state,action)=>{
+
+     state.todo.splice(action.payload.index,1,{
+        title:action.payload.newtodo,
+        id:nanoid()
+
+     })
+     
+
+        }
     }
     
 
@@ -30,5 +40,5 @@ export const todoSlice = createSlice({
 
 
 
-export const { addtodo , deletetodo } = todoSlice.actions
+export const { addtodo , deletetodo,edittodo } = todoSlice.actions
 export default todoSlice.reducer
