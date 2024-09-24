@@ -1,8 +1,3 @@
-# React + Vite
+live ulr is here
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://66f2e731b502f30a5fe32c35--comfy-griffin-bab955.netlify.app/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [rodo app using global state redus ](https://66f2e731b502f30a5fe32c35--comfy-griffin-bab955.netlify.app/) for Fast Refresh
