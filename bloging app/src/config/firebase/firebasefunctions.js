@@ -4,7 +4,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
   } from "firebase/auth";
-  import app from "./firebaseconfig";
+  import app from "./firebaseconfig"
   import {
     getFirestore,
     collection,
@@ -37,6 +37,7 @@ import {
           await addDoc(collection(db, "users"), obj)
             .then((res) => {
               console.log("user added to database successfully");
+              
             })
             .catch((err) => {
               console.log(err);
