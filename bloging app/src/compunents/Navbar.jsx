@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { signOutUser } from '../config/firebase/firebasefunctions'
 
 const Navbar = () => {
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
             <li><Link to='dashboard'>Dashboard</Link> </li>
             <li><Link to='profile'>profile</Link> </li>
             <li><Link to=''>allblogs</Link> </li>
-            <li><a>Link 2</a></li>
+            <li ><button onClick={signOutUser}><Link to='login'>Logout</Link></button></li>
           </ul>
         </details>
       </li>

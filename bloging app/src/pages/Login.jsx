@@ -1,10 +1,23 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
-import { loginUser } from '../config/firebase/firebasefunctions'; // Make sure this function handles login properly
+import { useRef, useState,  useEffect } from 'react';
+import { loginUser,auth } from '../config/firebase/firebasefunctions'; // Make sure this function handles login properly
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Login = () => {
+
   let navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        console.log(user.uid);
+        
+        navigate('/Dashboard')
+
+   }
+    });
+  }, []);
+
   
   let [user, setUser] = useState(null);
   let emailval = useRef(null);

@@ -33,10 +33,10 @@ import {
       createUserWithEmailAndPassword(auth, obj.email, obj.password)
         .then(async (res) => {
           resolve((obj.id = res.user.uid));
-          delete obj.password
           await addDoc(collection(db, "users"), obj)
             .then((res) => {
               console.log("user added to database successfully");
+              console.log(res);
               
             })
             .catch((err) => {
