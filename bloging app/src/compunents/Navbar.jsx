@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { signOutUser } from '../config/firebase/firebasefunctions'
+import { auth, signOutUser } from '../config/firebase/firebasefunctions'
 
 const Navbar = () => {
+
+  
+  
+
   return (
 <>
 <div className="navbar bg-base-1 bg-[#7749F8]">
@@ -13,9 +17,9 @@ const Navbar = () => {
     <ul className="menu menu-horizontal  text-lg font-bold">
       <li><Link to='login'>login</Link></li>
       <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="bg-base-100 rounded-t-none p-2">
+        <details className='z-10'>
+          <summary>Manu</summary>
+          <ul className="bg-base-100 rounded-t-none p-2 flex-row">
             <li><Link to='dashboard'>Dashboard</Link> </li>
             <li><Link to='profile'>profile</Link> </li>
             <li><Link to=''>allblogs</Link> </li>

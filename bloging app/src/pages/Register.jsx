@@ -1,18 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { auth, db, signUpUser } from '../config/firebase/firebasefunctions'; // Assuming this function is correctly set up for Firebase authentication
+import { auth, db } from '../config/firebase/firebasefunctions'; // Assuming these are correctly set up for Firebase authentication
 import { useNavigate } from 'react-router-dom';
 import { addDoc, collection } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import Firebase Storage functions
 
 const Register = () => {
-
-let navigate = useNavigate()
-  
-  let [user, setUser] = useState(null);
-  let firstnameval = useRef(null);
-  let emailval = useRef(null);
-  let passwordval = useRef(null);
-
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const firstnameval = useRef(null);
+  const emailval = useRef(null);
+  const passwordval = useRef(null);
+  const fileInputRef = useRef(null); // Reference for the file input
+  const [userImageURL, setUserImageURL] = useState(''); // State for storing uploaded image URL
 
   function getUser(event) {
     event.preventDefault();
@@ -24,45 +24,46 @@ let navigate = useNavigate()
     setUser(userData);
 
     createUserWithEmailAndPassword(auth, emailval.current.value, passwordval.current.value)
-    .then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      console.log(user.id);
-      alert('register done')
-      
-      async function adddata() {
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user.uid);
+        alert('Registration successful');
 
-        try {
-          const docRef = await addDoc(collection(db, "users"), {
-            userData:userData,
-            // userimage: userimageurl,
-            uid: user.uid,
-          });
-          console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-          console.error("Error adding document: ", e);
+        async function addData() {
+          try {
+            // Upload user image to Firebase Storage
+            const storage = getStorage();
+            const imageFile = fileInputRef.current.files[0]; // Get the selected file
+            const storageRef = ref(storage, `userImages/${user.uid}`); // Create a reference to the image
+
+            // Upload the file
+            await uploadBytes(storageRef, imageFile);
+            // Get the download URL of the uploaded image
+            const imageUrl = await getDownloadURL(storageRef);
+            console.log("Image uploaded and accessible at:", imageUrl);
+            setUserImageURL(imageUrl); // Save the image URL to state
+
+            // Add user data to Firestore
+            const docRef = await addDoc(collection(db, "users"), {
+              userData: userData,
+              userImage: imageUrl, // Store the image URL in Firestore
+              uid: user.uid,
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
         }
-      }
-      
-      
-      
-      
-      adddata()
-  
-  
-    })
-    .catch((error) => {
-      // const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      
-      // ..
-    });
-    
-    // signUpUser(userData); 
-    
-    navigate("/login")
-    // This should handle Firebase user registration
+
+        addData();
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage)
+      });
+
   }
 
   return (
@@ -107,6 +108,11 @@ let navigate = useNavigate()
                   <path fillRule="evenodd" d="M14 6a4 4 0 1 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" />
                 </svg>
                 <input type="password" className="grow" ref={passwordval} required placeholder="Password" />
+              </label>
+
+              <label className="input input-bordered flex items-center gap-2 mt-2">
+                <span className="text-gray-600">Upload Image:</span>
+                <input type="file" ref={fileInputRef} accept="image/*" required /> {/* File input for image */}
               </label>
 
               <div className='text-center'>
