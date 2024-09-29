@@ -11,6 +11,18 @@ let navigate = useNavigate()
   let emailval = useRef(null);
   let passwordval = useRef(null);
 
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      console.log(user.uid);
+      
+      navigate('/Dashboard')
+
+ }
+  });
+
+
+
   function getUser(event) {
     event.preventDefault();
     const userData = {
@@ -18,6 +30,9 @@ let navigate = useNavigate()
       email: emailval.current.value,
       password: passwordval.current.value,
     };
+
+
+    
     setUser(userData);
     console.log(userData); 
     signUpUser(userData); 

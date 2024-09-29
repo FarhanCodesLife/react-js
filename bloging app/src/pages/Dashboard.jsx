@@ -18,6 +18,7 @@ let [userinfo,setuserinfo]= useState(null)
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         console.log(user.uid);
+        
         const blogsData = await getData("blogs", user.uid);
         console.log(blogsData);
         setBlogs([...blogsData]);
@@ -25,15 +26,15 @@ let [userinfo,setuserinfo]= useState(null)
         // setuserinfo([...userin])
         // console.log(userinfo);
         
-        async function getdata() {
+        // async function getdata() {
           const q = query(collection(db, "users"), where("uid", "==", user.uid));
           // let querySnapshot = await getDocs(collection(db, "blogs"));
 
           const querySnapshot = await getDocs(q);
 
           querySnapshot.forEach((doc) => {
-              userinfo.push(...doc.data()) 
-              console.log(doc);
+              // userinfo.push(doc.data()) 
+              console.log(doc.data());
               
               setuserinfo([...userinfo])
 
@@ -46,13 +47,16 @@ let [userinfo,setuserinfo]= useState(null)
 
 
     }
-  getdata()
-  
+    // getdata()
+    
+  // }
+  else{
+    navigate('/login')
   }
-      else{
-        navigate('/login')
-      }
-    });
+}
+  
+  
+  );
   }, []);
 
   const sendDatatoFirestore = async (event) => {
