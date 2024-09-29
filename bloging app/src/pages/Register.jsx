@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { signUpUser } from '../config/firebase/firebasefunctions'; // Assuming this function is correctly set up for Firebase authentication
+import { auth, db, signUpUser } from '../config/firebase/firebasefunctions'; // Assuming this function is correctly set up for Firebase authentication
 import { useNavigate } from 'react-router-dom';
+import { addDoc, collection } from 'firebase/firestore';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Register = () => {
 
@@ -12,17 +14,6 @@ let navigate = useNavigate()
   let passwordval = useRef(null);
 
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      console.log(user.uid);
-      
-      navigate('/Dashboard')
-
- }
-  });
-
-
-
   function getUser(event) {
     event.preventDefault();
     const userData = {
@@ -30,12 +21,45 @@ let navigate = useNavigate()
       email: emailval.current.value,
       password: passwordval.current.value,
     };
-
-
-    
     setUser(userData);
-    console.log(userData); 
-    signUpUser(userData); 
+
+    createUserWithEmailAndPassword(auth, emailval.current.value, passwordval.current.value)
+    .then((userCredential) => {
+      // Signed up 
+      const user = userCredential.user;
+      console.log(user.id);
+      alert('register done')
+      
+      async function adddata() {
+
+        try {
+          const docRef = await addDoc(collection(db, "users"), {
+            userData:userData,
+            // userimage: userimageurl,
+            uid: user.uid,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      }
+      
+      
+      
+      
+      adddata()
+  
+  
+    })
+    .catch((error) => {
+      // const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      
+      // ..
+    });
+    
+    // signUpUser(userData); 
     
     navigate("/login")
     // This should handle Firebase user registration
