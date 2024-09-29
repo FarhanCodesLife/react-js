@@ -86,8 +86,7 @@ const Login = () => {
                 </button>
                 <div className='mt-5 text-cyan-500'>
                   <h1>
-                    <Link to='/register'>
-                      Already a User!
+                    <Link to='/register'>Not A User!
                     </Link>
                   </h1>
                 </div>

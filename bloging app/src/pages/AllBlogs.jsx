@@ -12,7 +12,7 @@ const AllBlogs = () => {
             const blogsData = await getAllData("blogs");
             console.log("Fetched Blogs Data:", blogsData);
             setBlogs(blogsData);
-        
+        // alert('welcome to my bloging app ')
         
      
       
@@ -37,14 +37,14 @@ const AllBlogs = () => {
         />
         <div>
           <h2 className="text-xl font-semibold">{item.title}</h2>
-          {item.userinfo && (
-            <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p>
-          )}
+          
+            {/* <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p> */}
+          
         </div>
       </div>
       <p className="text-gray-600 p-4 mb-4">{item.description}</p>
       <div key={item} className="flex justify-between items-center p-4 border-t">
-        <button onClick={()=>setlike(index + like)} className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+        <button onClick={()=>setlike(1 + like)} className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
           Like
         </button>
           <span className="text-gray-500">Likes: {item.likesCount || like}</span>

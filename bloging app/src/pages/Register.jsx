@@ -73,7 +73,7 @@ const Register = () => {
           <h1 className='px-14 py-5 text-5xl mb-10 font-bold'>Register</h1>
         </div>
 
-        <div className='w-full h-screen flex justify-center mt-20'>
+        <div className='w-full h- flex justify-center mt-20'>
           <div className='w-[20rem] m-auto'>
             <form onSubmit={getUser}>
               <label className="input input-bordered flex items-center gap-2 mt-2">
