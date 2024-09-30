@@ -38,7 +38,7 @@ const AllBlogs = () => {
         <div>
           <h2 className="text-xl font-semibold">{item.title}</h2>
           
-            {/* <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p> */}
+            <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p>
           
         </div>
       </div>

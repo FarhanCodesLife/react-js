@@ -15,15 +15,32 @@ const Dashboard = () => {
   const descriptionRef = useRef(null);
 
   useEffect(() => {
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        console.log("User UID:", user.uid);
+        // alert("you are susseccfully login")
+        // <span className="loading loading-infinity loading-md"></span>
+        await fetchBlogs(user.uid);
+        await fetchUserData(user.uid);
+      } else {
+        navigate('/login');
+      }
+    });
+
+
+
     const fetchUserData = async (uid) => {
       try {
+
+        
         const q = query(collection(db, "users"), where("uid", "==", uid));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
           console.log("Number of documents:", querySnapshot.size);
 
-          const userDoc = querySnapshot.docs[0].data();
+          const userDoc =  querySnapshot.docs[0].data();
           console.log("User Data:", userDoc);
 
           setUserinfo(userDoc);  // Set userinfo if the data exists
@@ -45,18 +62,8 @@ const Dashboard = () => {
       }
     };
 
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        console.log("User UID:", user.uid);
-        alert("you are susseccfully login")
-        // <span className="loading loading-infinity loading-md"></span>
-         fetchUserData(user.uid);
-        await fetchBlogs(user.uid);
-      } else {
-        navigate('/login');
-      }
-    });
-  }, [navigate]);
+   
+  }, []);
 
   const sendDatatoFirestore = async (event) => {
     event.preventDefault();
@@ -82,7 +89,7 @@ const Dashboard = () => {
       };
 
       const response = await sendData(newBlog, 'blogs');
-      setBlogs((prevBlogs) => [...prevBlogs, newBlog]);
+      setBlogs([...blogs, newBlog]);
 
       titleRef.current.value = '';
       descriptionRef.current.value = '';
