@@ -35,20 +35,21 @@ function userblog(uid) {
   return (
     <>
      <h1 className="text-3xl font-semibold text-center mb-8">User Blogs</h1>
-<div className="grid grid-cols-1 sm:grid-cols-2   gap-8">
+<div className="grid    gap-8">
+  
   {blogs.length > 0 ? blogs.map((item, index) => (
+    
     <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden  transition-transform transform hover:scale-105 duration-300">
-      <div className="flex items-center p-4" onClick={()=>userblog(item.uid)}>
+      <div className="flex items-center p-4 hover:link-hover cursor-pointer " onClick={()=>userblog(item.uid)}>
         <img
           src={item.userinfo.userImage}
           alt={`${item.userinfo.email}'s profile`}
-          className="w-14 h-14 rounded-full border-2 border-gray-300 mr-4 object-cover"
+          className="w-14 h-14 rounded-full border-2  border-gray-300 mr-4 object-cover"
         />
-        <div>
-          <h2 className="text-xl font-semibold">{item.title}</h2>
-          <h2 className="text-xl font-semibold">{item.uid}</h2>
+        <div className='   '>
+          <h2 className="text-xl     ">{item.title}</h2>
           
-            <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p>
+            <p className="text-gray-500 text-sm  ">Posted by: {item.userinfo.userData.firstname}</p>
           
         </div>
       </div>
