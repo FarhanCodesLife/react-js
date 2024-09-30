@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { getAllData, auth } from '../config/firebase/firebasefunctions';
+import { useNavigate } from 'react-router-dom';
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -22,6 +23,14 @@ const AllBlogs = () => {
   }, []);
 
   let [like,setlike]= useState(0)
+let navigat = useNavigate()
+
+function userblog(uid) {
+  navigat(`userblog/${uid}`)
+  
+}
+
+
 
   return (
     <>
@@ -29,7 +38,7 @@ const AllBlogs = () => {
 <div className="grid grid-cols-1 sm:grid-cols-2   gap-8">
   {blogs.length > 0 ? blogs.map((item, index) => (
     <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden  transition-transform transform hover:scale-105 duration-300">
-      <div className="flex items-center p-4">
+      <div className="flex items-center p-4" onClick={()=>userblog(item.uid)}>
         <img
           src={item.userinfo.userImage}
           alt={`${item.userinfo.email}'s profile`}
@@ -37,6 +46,7 @@ const AllBlogs = () => {
         />
         <div>
           <h2 className="text-xl font-semibold">{item.title}</h2>
+          <h2 className="text-xl font-semibold">{item.uid}</h2>
           
             <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p>
           

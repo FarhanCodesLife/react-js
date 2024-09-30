@@ -27,7 +27,6 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user.uid);
-        alert('Registration successful');
 
         async function addData() {
           try {
@@ -50,13 +49,13 @@ const Register = () => {
               uid: user.uid,
             });
             console.log("Document written with ID: ", docRef.id);
+           {imageUrl && navigate("/login") } 
           } catch (e) {
             console.error("Error adding document: ", e);
           }
         }
 
         addData();
-        navigate("/login");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -73,6 +72,22 @@ const Register = () => {
           <h1 className='px-14 py-5 text-5xl mb-10 font-bold'>Register</h1>
         </div>
 
+        
+        {user && <div role="alert" className="alert alert-success">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-6 w-6 shrink-0 stroke-current"
+    fill="none"
+    viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>Your Rigisteration has been confirmed!</span>
+</div> } 
+
         <div className='w-full h- flex justify-center mt-20'>
           <div className='w-[20rem] m-auto'>
             <form onSubmit={getUser}>
@@ -84,11 +99,12 @@ const Register = () => {
                   className="h-4 w-4 opacity-70">
                   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                 </svg>
-                <input type="text" className="grow" ref={firstnameval} required placeholder="Firstname" />
+                <input type="text" className="grow" ref={firstnameval } required placeholder="Firstname" />
               </label>
 
               <label className="input input-bordered flex items-center gap-2 mt-2">
                 <svg
+                
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
                   fill="currentColor"
@@ -117,6 +133,7 @@ const Register = () => {
 
               <div className='text-center'>
                 <button className='btn mt-4 bg-[#7749F8] border-none text-lg px-6 rounded-2xl' type='submit'>
+                  {}
                   Register
                 </button>
               </div>

@@ -8,7 +8,7 @@ import Register from './pages/Register.jsx'
 import AllBlogs from './pages/AllBlogs.jsx'
 import Profile from './pages/Profile.jsx'
 import Dashboard from './pages/Dashboard.jsx'
-
+import Userblog from './pages/Userblog.jsx'
 let router = createBrowserRouter([{
   path:'/',
   element:<Layout/>,
@@ -36,6 +36,9 @@ let router = createBrowserRouter([{
     {
       path:'dashboard',
       element:<Dashboard/>
+    },{
+      path:"/userblog/:uid",
+       element:<Userblog />
     }
   ]
 }])
