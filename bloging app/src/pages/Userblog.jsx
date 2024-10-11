@@ -15,7 +15,6 @@ useEffect(()=>{
     if (user) {
       console.log("User UID:", user.uid);
     } else {
-      alert("Please Login First ")
       navigate('/login');
     }
   });
@@ -68,12 +67,14 @@ useEffect(()=>{
                     className="w-14 h-14 rounded-full border-2 border-gray-300 mr-4 object-cover"
                   />
                   <div>
-                    <h2 className="text-xl font-semibold">{item.title}</h2>
+                    <h2 className="text-xl font-semibold">{item.userinfo.userData.firstname}</h2>
                     {item.userinfo && (
-                      <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.firstname}</p>
+                      <p className="text-gray-500 text-sm">Posted by: {item.userinfo.userData.email}</p>
                     )}
                   </div>
                 </div>
+                <h2 className="text-3xl px-6">{item.title}</h2>
+
                 <p className="text-gray-600 p-4 mb-4">{item.description}</p>
                 <div className="flex justify-between items-center p-4 border-t">
                   <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
