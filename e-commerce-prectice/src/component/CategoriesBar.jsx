@@ -8,8 +8,8 @@ const CategoriesBar = () => {
           CategoresBar
         </div>
 
-        <div className=" flex flex-wrap px-3 overflow-hidden justify-start gap-7 text-lg items-center">
-          <p>Fragrens</p>
+        <div className=" flex  flex-wrap px-3 overflow-hidden justify-start gap-7 text-lg items-center">
+          <p className="hover:border-2 border">Fragrens</p>
           <p>Beauty</p>
           <p>furniture</p>
           <p>Fruits</p>

@@ -8,7 +8,7 @@ const Products = ({ products, addcart ,categori }) => {
           .filter((item) => item.category === categori)
           .map((item) => {
             return (
-              <div key={item.id} className="w-96 overflow-hidd items-center border-2 bg-base-100   shadow-xl">
+              <div key={item.id} className="w-96 card overflow-hidd items-center border-2 bg-base-100   shadow-xl">
                 <figure>
                   <img width={800} src={item.thumbnail} alt={item.title} />
                 </figure>
@@ -40,6 +40,11 @@ const Products = ({ products, addcart ,categori }) => {
       ) : (
         <h1>loading...</h1>
       )}
+
+<div className=' text-center mb-8'>
+
+<button className='btn btn-ghost text-2xl font-serif text-center'>More...</button>
+</div>
     </>
   );
 };
