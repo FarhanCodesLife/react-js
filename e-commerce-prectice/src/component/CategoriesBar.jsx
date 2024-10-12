@@ -3,7 +3,7 @@ import React from "react";
 const CategoriesBar = () => {
   return (
     <>
-      <div className=" flex flex-wrap justify-start bg-gray-500 text-white text-wrap">
+      <div className=" flex flex-wrap justify-start bg-gray-200 text-black text-wrap">
         <div className="p-3 px-10 text-xl border-black border ">
           CategoresBar
         </div>

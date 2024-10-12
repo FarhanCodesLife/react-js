@@ -119,17 +119,17 @@ const App = () => {
 
 
 
+
+
+
 <div>
+<img src="https://f.nooncdn.com/mpcms/EN0001/assets/c1073d7b-2c8b-49aa-a551-d065094cbeb8.png?format=avif" className="card-img-top" alt="..."/>
 
-<div className='m-10 text-4xl font-bold  '>
+</div>
 
-  <h1>fragrances</h1>
-</div>
-<div className='flex overflow-scroll scroll-smooth   justify-start border p2  items-center  gap-3 m-5'>
 
-<Products products={products} addcart={addcart} categori={'groceries'}/>
-</div>
-</div>
+
+
 
 </>
 
