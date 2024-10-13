@@ -26,9 +26,7 @@ const Deal = () => {
 
     <div className="w-40 border-2 shadow-lg rounded-lg">
           <img src="https://f.nooncdn.com/mpcms/EN0001/assets/cab343fc-0cf6-412c-9444-2d28bded9534.png?format=avi" className="card-img-top" alt="..."/>
-          {/* <div className="card-body">
-            
-          </div> */}
+          
     </div>
 
 
