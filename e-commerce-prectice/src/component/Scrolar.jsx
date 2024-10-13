@@ -3,7 +3,7 @@ import React from 'react'
 const Scrolar = () => {
   return (
 <>
-<div className='flex overflow-hidden  gap-6 justify-start mt-10 overflow-scroll ' >
+<div className='flex   gap-6 justify-start mt-10 overflow-scroll ' >
 
 <div className="card" >
     <img width={100} src="https://f.nooncdn.com/mpcms/EN0001/assets/b22b97b7-eadc-4bf8-a3c1-2514a9f290c3.png?format=avif" className="card-img-width={100} top" alt="..."/>
