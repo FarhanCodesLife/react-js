@@ -18,7 +18,6 @@ const App = () => {
       
         axios('https://dummyjson.com/products')
         .then(res=>{
-          // console.log(res.data.products);
           setproducts(res.data.products)
           
         })
