@@ -36,6 +36,7 @@ const App = () => {
   let dispatch = useDispatch()
   
   let addcart =(item)=>{
+    alert('your Product Add  Succsesfully')
     dispatch(
       addtocart({
         item

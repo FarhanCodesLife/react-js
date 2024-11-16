@@ -1,19 +1,69 @@
-import React, {  useState } from 'react'
-import Card from './component/Card'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
 
 const App = () => {
-   let [age , setage] = useState(0)
- 
+  const [user,setusers] = useState(null)
+
+  useEffect(()=>{
+    async function facthdata() {
+      
+      try {
+       let response = await axios('http://localhost:3000/users')
+          console.log(response.data);
+          setusers(response.data)
+      } catch (error) {
+        console.log(error);}
+    }
+    facthdata()
+  },[])
+
+
+async function deleteuser(id) {
+  console.log(id);
+    
+     await axios.delete(`http://localhost:3000/user/${id}`)
+   let response = await axios('http://localhost:3000/users')
+    setusers(response.data)
+
+
+}
+
+
+async function edituser(id) {
+  console.log(id);
+    
+     await axios.put(`http://localhost:3000/user/${id}`)
+   let response = await axios('http://localhost:3000/users')
+    setusers(response.data)
+
+
+}
+
+
   return (
     <>
-    <h1>Age {age}</h1>
-    <button onClick={()=>{setage(age+1)}}>New age</button>
+    <div>todo</div>
+    {user && user.length >= 0 ?
+        
+        (user.map((item,index)=>(
 
-    {age <= 10  ?<h1>bache ho abhi</h1>: age <= 18 ?<h1>extra fee charge hogi Rs1000</h1> :age >18 ?<Card />:<h1>age to batwo</h1>}
+          
+          <div key={index}>
+
+          <h1>username:{item.data.username}</h1>
+          <h1>id:{item.data.id}</h1>
+          <button onClick={()=>{deleteuser(item.data.id)}}>delet</button>
+          <button onClick={()=>{edituser(item.data.id)}}>edit</button>
+          </div>
+          
+        ))):(<h1>loading..</h1>)
     
+    }
+
+      
+
     </>
-    
-
   )
 }
 
