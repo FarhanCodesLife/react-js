@@ -57,10 +57,7 @@ async function edituser(id) {
           </div>
           
         ))):(<h1>loading..</h1>)
-    
     }
-
-      
 
     </>
   )
